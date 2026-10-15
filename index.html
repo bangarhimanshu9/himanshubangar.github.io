@@ -1,0 +1,351 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Himanshu Bangar</title>
+  <meta name="description" content="Himanshu Bangar — physicist working on spintronics, magnetization dynamics and quantum-material heterostructures.">
+  <meta property="og:title" content="Himanshu Bangar">
+  <meta property="og:description" content="Physicist working on spintronics, magnetization dynamics and quantum-material heterostructures.">
+  <meta property="og:image" content="photo.jpg">
+  <style>
+    :root {
+      --bg: #f7f6f2;
+      --surface: #ffffff;
+      --text: #15191d;
+      --muted: #5d6670;
+      --line: #e2e0d9;
+      --accent: #0f5f73;
+      --accent-2: #b4472a;
+      --accent-soft: #e3eff1;
+      --radius: 14px;
+      --max: 860px;
+      --font: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --serif: "Iowan Old Style", "Palatino Linotype", Palatino, "Book Antiqua", Georgia, serif;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #101417;
+        --surface: #171d21;
+        --text: #e9edf0;
+        --muted: #98a3ad;
+        --line: #26303a;
+        --accent: #5cc3d6;
+        --accent-2: #f08c6c;
+        --accent-soft: #14303a;
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0; background: var(--bg); color: var(--text);
+      font-family: var(--font); font-size: 17px; line-height: 1.65;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-underline-offset: 3px; }
+    a:hover { text-decoration-thickness: 2px; }
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 20px; }
+
+    /* Nav */
+    nav {
+      position: sticky; top: 0; z-index: 10;
+      background: color-mix(in srgb, var(--bg) 86%, transparent);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--line);
+    }
+    nav .wrap { display: flex; justify-content: space-between; align-items: center; height: 60px; gap: 16px; }
+    nav .logo { font-family: var(--serif); font-weight: 600; font-size: 19px; color: var(--text); text-decoration: none; white-space: nowrap; }
+    nav ul { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; }
+    nav ul a { color: var(--muted); text-decoration: none; font-size: 15px; }
+    nav ul a:hover { color: var(--text); }
+
+    /* Hero */
+    .hero { padding: 72px 0 56px; display: grid; grid-template-columns: 200px 1fr; gap: 44px; align-items: center; }
+    .photo {
+      width: 200px; height: 200px; border-radius: 50%; object-fit: cover;
+      border: 4px solid var(--surface);
+      box-shadow: 0 0 0 1px var(--line), 0 18px 40px -18px rgba(15, 95, 115, .45);
+    }
+    .eyebrow { font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin: 0 0 10px; }
+    .hero h1 {
+      font-family: var(--serif); font-weight: 600;
+      font-size: clamp(38px, 6.4vw, 56px); line-height: 1.05; letter-spacing: -0.02em;
+      margin: 0 0 16px;
+    }
+    .lead { font-size: 19px; color: var(--muted); margin: 0 0 26px; max-width: 34em; }
+    .btns { display: flex; flex-wrap: wrap; gap: 10px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 9px 16px; border-radius: 999px;
+      text-decoration: none; font-weight: 600; font-size: 14.5px;
+      border: 1px solid var(--line); color: var(--text); background: var(--surface);
+      transition: border-color .15s, transform .15s;
+    }
+    .btn:hover { border-color: var(--accent); transform: translateY(-1px); }
+    .btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+    @media (prefers-color-scheme: dark) { .btn.primary { color: #08262e; } }
+    .btn svg { width: 16px; height: 16px; flex: none; }
+
+    /* Sections */
+    section { padding: 52px 0; border-top: 1px solid var(--line); }
+    h2 { font-family: var(--serif); font-size: 28px; font-weight: 600; letter-spacing: -0.01em; margin: 0 0 22px; }
+    h3.sub { font-size: 13px; text-transform: uppercase; letter-spacing: .12em; color: var(--muted); margin: 32px 0 12px; font-weight: 600; }
+    section p { margin: 0 0 16px; max-width: 42em; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin: 20px 0 0; }
+    .chips li { padding: 6px 14px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); font-size: 14.5px; font-weight: 600; }
+
+    /* Publications */
+    .pubs { list-style: none; counter-reset: pub; padding: 0; margin: 0; }
+    .pubs li {
+      counter-increment: pub; position: relative;
+      padding: 18px 0 18px 48px; border-bottom: 1px solid var(--line);
+    }
+    .pubs li:last-child { border-bottom: 0; }
+    .pubs li::before {
+      content: counter(pub); position: absolute; left: 0; top: 18px;
+      width: 30px; height: 30px; border-radius: 50%;
+      display: grid; place-items: center;
+      font-size: 13px; font-weight: 700; color: var(--accent); background: var(--accent-soft);
+    }
+    .pubs .title { font-weight: 600; display: block; line-height: 1.4; }
+    .pubs .authors { color: var(--muted); font-size: 15px; display: block; margin-top: 4px; }
+    .pubs .authors b { color: var(--text); font-weight: 600; }
+    .pubs .venue { font-size: 15px; display: block; margin-top: 2px; }
+    .pubs .venue i { color: var(--accent-2); font-style: italic; }
+    .first { display: inline-block; margin-left: 8px; font-size: 11.5px; font-weight: 700; letter-spacing: .04em; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--accent-2); color: var(--accent-2); vertical-align: 2px; }
+
+    /* Talks */
+    .talks { list-style: none; padding: 0; margin: 0; }
+    .talks li { display: grid; grid-template-columns: 110px 1fr; gap: 16px; padding: 11px 0; border-bottom: 1px dashed var(--line); }
+    .talks li:last-child { border-bottom: 0; }
+    .talks .when { color: var(--muted); font-size: 15px; font-variant-numeric: tabular-nums; }
+    .talks .kind { display: inline-block; font-size: 11.5px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--accent); margin-right: 6px; }
+    .talks .where { color: var(--muted); font-size: 15px; }
+
+    details { margin-top: 14px; }
+    summary { cursor: pointer; color: var(--accent); font-weight: 600; font-size: 15px; list-style: none; }
+    summary::-webkit-details-marker { display: none; }
+    summary::before { content: "+ "; }
+    details[open] summary::before { content: "− "; }
+
+    /* Cards */
+    .grid { display: grid; gap: 14px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); }
+    .card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px; }
+    .card strong { display: block; margin-bottom: 4px; line-height: 1.35; }
+    .card span { color: var(--muted); font-size: 15px; }
+    .card .yr { font-size: 12.5px; font-weight: 700; color: var(--accent-2); letter-spacing: .04em; display: block; margin-bottom: 6px; }
+
+    /* Timeline */
+    .timeline { list-style: none; margin: 0; padding: 0; border-left: 2px solid var(--line); }
+    .timeline li { position: relative; padding: 0 0 26px 26px; }
+    .timeline li:last-child { padding-bottom: 0; }
+    .timeline li::before {
+      content: ""; position: absolute; left: -7px; top: 7px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--bg); border: 2px solid var(--accent);
+    }
+    .timeline .when { font-size: 14px; color: var(--muted); font-variant-numeric: tabular-nums; }
+    .timeline strong { display: block; font-size: 17.5px; }
+    .timeline span { color: var(--muted); font-size: 15px; display: block; }
+
+    .skills { columns: 2 260px; column-gap: 32px; padding-left: 18px; margin: 0; }
+    .skills li { margin-bottom: 6px; break-inside: avoid; }
+
+    footer { padding: 36px 0 52px; color: var(--muted); font-size: 14px; border-top: 1px solid var(--line); }
+
+    @media (max-width: 680px) {
+      nav ul li.hide-sm { display: none; }
+      nav ul { gap: 12px; }
+      nav ul a { font-size: 14px; }
+      nav .logo { font-size: 17px; }
+      .wrap { padding: 0 16px; }
+      .hero { grid-template-columns: 1fr; gap: 26px; padding: 44px 0 40px; }
+      .photo { width: 132px; height: 132px; }
+      .talks li { grid-template-columns: 1fr; gap: 0; }
+      .pubs li { padding-left: 42px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="wrap">
+      <a class="logo" href="#top">Himanshu Bangar</a>
+      <ul>
+        <li><a href="#research">Research</a></li>
+        <li><a href="#publications">Publications</a></li>
+        <li class="hide-sm"><a href="#talks">Talks</a></li>
+        <li class="hide-sm"><a href="#cv">CV</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main id="top" class="wrap">
+
+    <header class="hero">
+      <img class="photo" src="photo.jpg" alt="Portrait of Himanshu Bangar" width="200" height="200">
+      <div>
+        <p class="eyebrow">Physicist · Spintronics</p>
+        <h1>Himanshu Bangar</h1>
+        <p class="lead">I study how spin currents and magnetization behave at the interfaces of quantum materials, including 2D materials, kagome magnets and altermagnets, with the goal of faster, more energy-efficient spintronic devices.</p>
+        <div class="btns">
+          <a class="btn primary" href="mailto:bangarhimanshu9@gmail.com">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>Email
+          </a>
+          <a class="btn" href="https://scholar.google.com/citations?user=5Lg-wRgAAAAJ&amp;hl=en" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3 1 9l11 6 9-4.9V17h2V9L12 3Zm-6.5 9.6V16c0 1.9 2.9 3.5 6.5 3.5s6.5-1.6 6.5-3.5v-3.4L12 16.2l-6.5-3.6Z"/></svg>Google Scholar
+          </a>
+          <a class="btn" href="https://www.researchgate.net/profile/Himanshu-Bangar" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4 3h16a1 1 0 0 1 1 1v16a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1Zm4.2 4.5v9h1.7v-3.6h1.1l2 3.6h2l-2.3-3.9c1.1-.4 1.8-1.3 1.8-2.6 0-1.6-1.1-2.5-3-2.5H8.2Zm1.7 1.4h1.3c.9 0 1.4.4 1.4 1.1 0 .8-.5 1.2-1.4 1.2H9.9V8.9Z"/></svg>ResearchGate
+          </a>
+          <a class="btn" href="https://www.linkedin.com/in/bangarhimanshu9/" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM3 9.75h4V21H3V9.75Zm7 0h3.8v1.6h.06c.53-1 1.83-2.06 3.77-2.06 4.03 0 4.77 2.65 4.77 6.1V21h-4v-5c0-1.2-.02-2.73-1.66-2.73-1.67 0-1.93 1.3-1.93 2.64V21h-4V9.75Z"/></svg>LinkedIn
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <section id="research">
+      <h2>Research</h2>
+      <p>My work sits at the meeting point of magnetism and materials science. I grow and characterize magnetic thin films and heterostructures, then measure how they convert between spin and charge currents and how spin-orbit torques drive their magnetization. Recent projects cover large spin-to-charge conversion at the interface between 2D transition-metal dichalcogenides and permalloy, the giant spin Hall conductivity of the kagome antiferromagnet Mn₃Sn, and large-area SnS films for spin pumping.</p>
+      <p>I completed my Ph.D. at the Indian Institute of Technology Delhi with Prof. Pranaba Kishor Muduli, with a thesis on <em>Magnetization Dynamics in Quantum Materials-Based Heterostructures</em>. I now work in Gothenburg, Sweden, where I have helped organize the Sweden Magnetism Meet 2026 and the Workshop on Altermagnets at Chalmers University of Technology.</p>
+      <ul class="chips">
+        <li>Spintronics</li>
+        <li>Magnetization dynamics</li>
+        <li>Spin-orbit torques</li>
+        <li>Magnetic thin films &amp; multilayers</li>
+        <li>2D materials</li>
+        <li>Weyl semimetals</li>
+        <li>Altermagnets</li>
+      </ul>
+    </section>
+
+    <section id="publications">
+      <h2>Publications</h2>
+      <ol class="pubs">
+        <li>
+          <span class="title">Optimization of growth of large-area SnS thin films and heterostructures for spin pumping and spin-orbit torque<span class="first">First author</span></span>
+          <span class="authors"><b>H. Bangar</b>, P. Gupta, S. Dewan, R. Singh, S. Das, P. K. Muduli</span>
+          <span class="venue"><i>Physical Review Materials</i> 7, 094406 (2023)</span>
+        </li>
+        <li>
+          <span class="title">Large spin-to-charge conversion at the two-dimensional interface of transition-metal dichalcogenides and permalloy<span class="first">First author</span></span>
+          <span class="authors"><b>H. Bangar</b>, A. Kumar, N. Chowdhury, R. Mudgal, P. Gupta, R. S. Yadav, S. Das, P. K. Muduli</span>
+          <span class="venue"><i>ACS Applied Materials &amp; Interfaces</i> 14, 41598 (2022)</span>
+        </li>
+        <li>
+          <span class="title">Large spin Hall conductivity in epitaxial thin films of kagome antiferromagnet Mn₃Sn at room temperature<span class="first">First author</span></span>
+          <span class="authors"><b>H. Bangar</b>, K. I. A. Khan, A. Kumar, N. Chowdhury, P. K. Muduli, P. K. Muduli</span>
+          <span class="venue"><i>Advanced Quantum Technologies</i> 6, 2200115 (2022)</span>
+        </li>
+        <li>
+          <span class="title">Kagome magnets: the emerging materials for spintronic memories</span>
+          <span class="authors">N. Chowdhury, K. I. A. Khan, <b>H. Bangar</b>, P. Gupta, R. S. Yadav, R. Agarwal, A. Kumar, P. K. Muduli</span>
+          <span class="venue"><i>Proc. Natl. Acad. Sci. India Sect. A: Phys. Sci.</i> (2023)</span>
+        </li>
+        <li>
+          <span class="title">Intrinsic anomalous Hall effect in thin films of topological kagome ferromagnet Fe₃Sn₂</span>
+          <span class="authors">K. I. A. Khan, R. S. Yadav, <b>H. Bangar</b>, A. Kumar, N. Chowdhury, P. K. Muduli, P. K. Muduli</span>
+          <span class="venue"><i>Nanoscale</i> 14, 8484 (2022)</span>
+        </li>
+        <li>
+          <span class="title">Spin pumping through different spin-orbit coupling interfaces in β-W/interlayer/Co₂FeAl heterostructures</span>
+          <span class="authors">S. Hait, S. Husain, <b>H. Bangar</b>, L. Pandey, V. Barwal, N. Kumar, N. K. Gupta, V. Mishra, N. Sharma, P. Gupta, B. S. Yadav, P. K. Muduli, S. Chaudhary</span>
+          <span class="venue"><i>ACS Applied Materials &amp; Interfaces</i> 14, 37182 (2022)</span>
+        </li>
+      </ol>
+      <p style="margin-top:20px; font-size:15px; color:var(--muted)">For the full and current list, see my <a href="https://scholar.google.com/citations?user=5Lg-wRgAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar profile</a>.</p>
+    </section>
+
+    <section id="talks">
+      <h2>Talks &amp; conferences</h2>
+
+      <h3 class="sub" style="margin-top:0">Organizer</h3>
+      <div class="grid">
+        <div class="card"><span class="yr">JUNE 2026</span><strong>Sweden Magnetism Meet 2026</strong><span>Chalmers Conference Centre, Gothenburg</span></div>
+        <div class="card"><span class="yr">SEPTEMBER 2026</span><strong>Workshop on Altermagnets</strong><span>Chalmers University of Technology, Gothenburg</span></div>
+      </div>
+
+      <h3 class="sub">Selected talks</h3>
+      <ul class="talks">
+        <li><div class="when">Nov 2026</div><div><span class="kind">Oral</span>MMM 2026 <span class="where">· Honolulu, Hawaii, USA</span></div></li>
+        <li><div class="when">Sep 2026</div><div><span class="kind">Invited</span>Workshop on Altermagnets <span class="where">· Gothenburg, Sweden</span></div></li>
+        <li><div class="when">Jun 2026</div><div><span class="kind">Oral</span>Sweden Magnetism Meet 2026 <span class="where">· Gothenburg, Sweden</span></div></li>
+        <li><div class="when">Apr 2026</div><div><span class="kind">Oral</span>IEEE INTERMAG 2026 <span class="where">· Manchester, UK</span></div></li>
+        <li><div class="when">Aug 2025</div><div><span class="kind">Oral</span>JEMS 2025 (Joint European Magnetic Symposia) <span class="where">· Frankfurt am Main, Germany</span></div></li>
+        <li><div class="when">Jul 2025</div><div><span class="kind">Oral</span>Swedish-Korean Orbitronics Workshop 2025 <span class="where">· Gothenburg, Sweden</span></div></li>
+        <li><div class="when">Jan 2025</div><div><span class="kind">Oral</span>MMM 2025 <span class="where">· New Orleans, USA</span></div></li>
+      </ul>
+
+      <details>
+        <summary>Earlier talks and posters</summary>
+        <ul class="talks" style="margin-top:10px">
+          <li><div class="when">May 2023</div><div><span class="kind">Poster</span>INTERMAG 2023 <span class="where">· Sendai, Japan</span></div></li>
+          <li><div class="when">Oct 2022</div><div><span class="kind">Oral</span>MMM 2022 <span class="where">· Minneapolis, USA</span></div></li>
+          <li><div class="when">Jun 2022</div><div><span class="kind">Poster</span>Sol-SkyMag 2022 <span class="where">· San Sebastián, Spain</span></div></li>
+          <li><div class="when">Dec 2021</div><div><span class="kind">Poster</span>IWPSD 2021 <span class="where">· online</span></div></li>
+          <li><div class="when">Nov 2021</div><div><span class="kind">Poster</span>Symposium on Magnetism and Spintronics <span class="where">· NISER, Bhubaneswar</span></div></li>
+          <li><div class="when">Aug 2021</div><div><span class="kind">Poster</span>EPFL–ETH Zurich Summer School: Spintronics and Magnetism in 2D Materials <span class="where">· online</span></div></li>
+          <li><div class="when">Nov 2020</div><div><span class="kind">Oral</span>MMM 2020 <span class="where">· virtual</span></div></li>
+          <li><div class="when">Nov 2020</div><div><span class="kind">Poster</span>IEEE ICEE 2020 <span class="where">· IIT Delhi</span></div></li>
+          <li><div class="when">Aug 2020</div><div><span class="kind">Oral</span>Around-the-Clock Around-the-Globe Magnetics Conference <span class="where">· IEEE Magnetics Society</span></div></li>
+          <li><div class="when">Aug 2020</div><div><span class="kind">Poster</span>SPICE Workshop: 2D Van der Waals Spin Systems <span class="where">· online, Mainz</span></div></li>
+        </ul>
+      </details>
+    </section>
+
+    <section id="cv">
+      <h2>Education &amp; honors</h2>
+      <ul class="timeline">
+        <li><div class="when">From 2018</div><strong>Ph.D. in Physics</strong><span>Indian Institute of Technology Delhi · Supervisor: Prof. Pranaba Kishor Muduli</span></li>
+        <li><div class="when">2016 – 2018</div><strong>M.Sc. Physics, Gold Medalist (1st rank)</strong><span>Dr. B. R. Ambedkar National Institute of Technology, Jalandhar</span></li>
+        <li><div class="when">2013 – 2016</div><strong>B.Sc. (Hons.) Physics</strong><span>University of Delhi</span></li>
+      </ul>
+
+      <h3 class="sub">Awards &amp; grants</h3>
+      <div class="grid">
+        <div class="card"><span class="yr">2026</span><strong>Mobility Grant</strong><span>SIO Grafen 2D Graduate Network</span></div>
+        <div class="card"><span class="yr">2025</span><strong>KVVS Research Grant</strong><span>Royal Swedish Society of Sciences and Letters</span></div>
+        <div class="card"><span class="yr">2023</span><strong>Research Excellence Travel Award</strong><span>IRD Unit, IIT Delhi</span></div>
+        <div class="card"><span class="yr">2018</span><strong>CSIR-UGC JRF &amp; NET</strong><span>All India Rank 16 · also GATE (AIR 273) and JEST (AIR 108)</span></div>
+      </div>
+
+      <h3 class="sub">Experimental toolkit</h3>
+      <ul class="skills">
+        <li>Magnetron sputtering &amp; pulsed laser deposition</li>
+        <li>Ferromagnetic resonance (FMR) &amp; spin pumping</li>
+        <li>Spin-torque FMR &amp; inverse spin Hall effect</li>
+        <li>Second-harmonic Hall &amp; switching measurements</li>
+        <li>MOKE magnetometry &amp; microscopy</li>
+        <li>AFM / MFM</li>
+        <li>Optical &amp; e-beam lithography, Ar-ion milling</li>
+        <li>XRD, XRR, Raman, SEM, XPS</li>
+        <li>Micromagnetic simulations (MuMax³)</li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <p>I'm always glad to talk about collaborations, research positions, or anything spin-related.</p>
+      <div class="btns" style="margin-top:18px">
+        <a class="btn primary" href="mailto:bangarhimanshu9@gmail.com">bangarhimanshu9@gmail.com</a>
+        <a class="btn" href="https://www.linkedin.com/in/bangarhimanshu9/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn" href="https://www.researchgate.net/profile/Himanshu-Bangar" target="_blank" rel="noopener">ResearchGate</a>
+        <a class="btn" href="https://scholar.google.com/citations?user=5Lg-wRgAAAAJ&amp;hl=en" target="_blank" rel="noopener">Google Scholar</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="wrap">© <span id="year">2026</span> Himanshu Bangar. All rights reserved.</div>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
